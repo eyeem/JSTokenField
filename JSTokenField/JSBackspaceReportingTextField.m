@@ -11,6 +11,7 @@
 @implementation JSBackspaceReportingTextField
 
 - (void)deleteBackward {
+
     BOOL shouldDismiss = (self.text.length == 0);
 
     [super deleteBackward];

@@ -36,13 +36,13 @@ extern NSString *const JSTokenFieldNewFrameKey;
 extern NSString *const JSTokenFieldOldFrameKey;
 extern NSString *const JSDeletedTokenKey;
 
-@interface JSTokenField : UIView <UITextFieldDelegate> {
+@interface JSTokenField : UIScrollView <UITextFieldDelegate> {
 	
 	NSMutableArray *_tokens;
 	
 	UITextField *_textField;
 	
-	id <JSTokenFieldDelegate> _delegate;
+//	id <JSTokenFieldDelegate, UIScrollViewDelegate> _delegate;
 	
 	JSTokenButton *_deletedToken;
 	
@@ -52,7 +52,7 @@ extern NSString *const JSDeletedTokenKey;
 @property (nonatomic, readonly) UITextField *textField;
 @property (nonatomic, retain) UILabel *label;
 @property (nonatomic, readonly, copy) NSMutableArray *tokens;
-@property (nonatomic, assign) id <JSTokenFieldDelegate> delegate;
+@property (nonatomic, assign) id <JSTokenFieldDelegate, UIScrollViewDelegate> delegate;
 
 - (void)addTokenWithTitle:(NSString *)string representedObject:(id)obj;
 - (void)removeTokenForString:(NSString *)string;
@@ -61,13 +61,15 @@ extern NSString *const JSDeletedTokenKey;
 
 @end
 
-@protocol JSTokenFieldDelegate <NSObject>
+@protocol JSTokenFieldDelegate <NSObject, UIScrollViewDelegate>
 
 @optional
 
 - (void)tokenField:(JSTokenField *)tokenField didAddToken:(NSString *)title representedObject:(id)obj;
 - (void)tokenField:(JSTokenField *)tokenField didRemoveToken:(NSString *)title representedObject:(id)obj;
 - (BOOL)tokenField:(JSTokenField *)tokenField shouldRemoveToken:(NSString *)title representedObject:(id)obj;
+- (void)tokenField:(JSTokenField *)tokenField didSelectToken:(NSString *)title representedObject:(id)obj;
+- (void)tokenField:(JSTokenField *)tokenField wantsToSearchFor:(NSString*)stringSearch;
 
 
 - (void)tokenFieldTextDidChange:(JSTokenField *)tokenField;

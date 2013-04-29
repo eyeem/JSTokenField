@@ -41,8 +41,8 @@
 + (JSTokenButton *)tokenWithString:(NSString *)string representedObject:(id)obj
 {
 	JSTokenButton *button = (JSTokenButton *)[self buttonWithType:UIButtonTypeCustom];
-	[button setNormalBg:[[UIImage imageNamed:@"tokenNormal.png"] stretchableImageWithLeftCapWidth:14 topCapHeight:0]];
-	[button setHighlightedBg:[[UIImage imageNamed:@"tokenHighlighted.png"] stretchableImageWithLeftCapWidth:14 topCapHeight:0]];
+	[button setNormalBg:[[UIImage imageNamed:@"people.tagging.bubble.png"] stretchableImageWithLeftCapWidth:13 topCapHeight:0]];
+	[button setHighlightedBg:[[UIImage imageNamed:@"people.tagging.selected.bubble.png"] stretchableImageWithLeftCapWidth:13 topCapHeight:0]];
 	[button setAdjustsImageWhenHighlighted:NO];
 	[button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 	[[button titleLabel] setFont:[UIFont fontWithName:@"Helvetica Neue" size:15]];
@@ -67,7 +67,6 @@
 - (void)setToggled:(BOOL)toggled
 {
 	_toggled = toggled;
-	
 	if (_toggled)
 	{
 		[self setBackgroundImage:self.highlightedBg forState:UIControlStateNormal];
@@ -105,8 +104,9 @@
 }
 
 #pragma mark - UIKeyInput
+
 - (void)deleteBackward {
-    id <JSTokenFieldDelegate> delegate = _parentField.delegate;
+	id <JSTokenFieldDelegate> delegate = _parentField.delegate;
     if ([delegate respondsToSelector:@selector(tokenField:shouldRemoveToken:representedObject:)]) {
         NSString *name = [self titleForState:UIControlStateNormal];
         BOOL shouldRemove = [delegate tokenField:_parentField shouldRemoveToken:name representedObject:self.representedObject];
