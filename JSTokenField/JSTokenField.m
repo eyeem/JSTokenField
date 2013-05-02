@@ -43,7 +43,6 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 #define MAX_HEIGHT	80
 
 @interface JSTokenField ();
-
 - (JSTokenButton *)tokenWithString:(NSString *)string representedObject:(id)obj;
 - (void)deleteHighlightedToken;
 
@@ -440,7 +439,13 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 		}
 	}
 	
-	return YES;
+	//Hacky. Max number of tagged people...
+	if ([_tokens count] < 4) {
+		return YES;		
+	} else {
+		return NO;
+	}
+	
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
