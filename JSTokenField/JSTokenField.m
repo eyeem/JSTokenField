@@ -52,11 +52,6 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 
 @implementation JSTokenField
 
-@synthesize tokens = _tokens;
-@synthesize textField = _textField;
-@synthesize label = _label;
-//@synthesize delegate = _delegate;
-
 - (id)initWithFrame:(CGRect)frame
 {
 	if (frame.size.height < DEFAULT_HEIGHT)
@@ -83,6 +78,10 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 - (void)commonSetup {
     CGRect frame = self.frame;
 	
+	//default limit
+	self.tagLimit = 4;
+	
+
 	self.bounces = YES;
     [self setBackgroundColor:[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0]];
 	
@@ -123,15 +122,6 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
     [self addSubview:_textField];
     
     [self.textField addTarget:self action:@selector(textFieldWasUpdated:) forControlEvents:UIControlEventEditingChanged];
-}
-
-- (void)dealloc
-{
-	[_textField release], _textField = nil;
-	[_label release], _label = nil;
-	[_tokens release], _tokens = nil;
-	
-	[super dealloc];
 }
 
 
@@ -440,7 +430,7 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 	}
 	
 	//Hacky. Max number of tagged people...
-	if ([_tokens count] < 4) {
+	if ([_tokens count] < self.tagLimit) {
 		return YES;		
 	} else {
 		return NO;

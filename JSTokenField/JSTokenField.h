@@ -36,23 +36,15 @@ extern NSString *const JSTokenFieldNewFrameKey;
 extern NSString *const JSTokenFieldOldFrameKey;
 extern NSString *const JSDeletedTokenKey;
 
-@interface JSTokenField : UIScrollView <UITextFieldDelegate> {
+@interface JSTokenField : UIScrollView <UITextFieldDelegate>
 	
-	NSMutableArray *_tokens;
-	
-	UITextField *_textField;
-	
-//	id <JSTokenFieldDelegate, UIScrollViewDelegate> _delegate;
-	
-	JSTokenButton *_deletedToken;
-	
-	UILabel *_label;
-}
-
 @property (nonatomic, readonly) UITextField *textField;
 @property (nonatomic, retain) UILabel *label;
 @property (nonatomic, readonly, copy) NSMutableArray *tokens;
 @property (nonatomic, assign) id <JSTokenFieldDelegate, UIScrollViewDelegate> delegate;
+@property (nonatomic, assign) int tagLimit;
+@property (nonatomic, retain) JSTokenButton *deletedToken;
+
 
 - (void)addTokenWithTitle:(NSString *)string representedObject:(id)obj;
 - (void)removeTokenForString:(NSString *)string;
