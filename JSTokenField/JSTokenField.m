@@ -122,6 +122,8 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
     [self addSubview:_textField];
     
     [self.textField addTarget:self action:@selector(textFieldWasUpdated:) forControlEvents:UIControlEventEditingChanged];
+    [self.textField addTarget:self action:@selector(textFieldWasUpdated:) forControlEvents:UIControlEventValueChanged];
+	
 }
 
 
@@ -398,9 +400,14 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 
 
 - (void)textFieldWasUpdated:(UITextField *)sender {
-    if ([self.delegate respondsToSelector:@selector(tokenFieldTextDidChange:)]) {
-        [self.delegate tokenFieldTextDidChange:self];
-    }
+//    if ([self.delegate respondsToSelector:@selector(tokenFieldTextDidChange:)]) {
+//        [self.delegate tokenFieldTextDidChange:self];
+//    }
+	
+	
+	if ([self.delegate respondsToSelector:@selector(tokenField:wantsToSearchFor:)]) {
+		[self.delegate tokenField:self wantsToSearchFor:sender.text];
+	}
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -419,18 +426,8 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 			[token becomeFirstResponder];
 		}
 		return NO;
-	} else if ([string isEqualToString:@""]) {
-		if ([self.delegate respondsToSelector:@selector(tokenField:wantsToSearchFor:)]) {
-			[self.delegate tokenField:self wantsToSearchFor:[textField.text substringToIndex:[textField.text length] - 1 ]];
-		}
-	}else {
-		if ([self.delegate respondsToSelector:@selector(tokenField:wantsToSearchFor:)]) {
-			[self.delegate tokenField:self wantsToSearchFor:[NSString stringWithFormat:@"%@%@",textField.text,string]];
-		}
-	}
-	
-	//Hacky. Max number of tagged people...
-	if ([_tokens count] < self.tagLimit) {
+	} else if ([_tokens count] < self.tagLimit) {
+		[self textFieldWasUpdated:textField];
 		return YES;		
 	} else {
 		return NO;
