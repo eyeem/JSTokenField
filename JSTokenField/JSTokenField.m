@@ -403,6 +403,10 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 //        [self.delegate tokenFieldTextDidChange:self];
 //    }
 	
+	if ([sender.text isEqualToString:@""]) {
+		sender.text = @" ";
+	}
+	
 	
 	if ([self.delegate respondsToSelector:@selector(tokenField:wantsToSearchFor:)]) {
 		[self.delegate tokenField:self wantsToSearchFor:sender.text];
@@ -411,7 +415,9 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {	
-    if ([string isEqualToString:@""] && NSEqualRanges(range, NSMakeRange(0, 0)))
+    if (([string isEqualToString:@""] && NSEqualRanges(range, NSMakeRange(0, 0))) ||
+		([string isEqualToString:@""] && NSEqualRanges(range, NSMakeRange(0, 1)) && [textField.text isEqualToString:@" "])
+		)
 	{
         JSTokenButton *token = [_tokens lastObject];
 		if (!token) {
