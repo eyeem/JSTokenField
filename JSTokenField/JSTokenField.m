@@ -111,7 +111,6 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
     [_textField setBackground:nil];
     [_textField setBackgroundColor:[UIColor clearColor]];
     [_textField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-	_textField.keyboardAppearance = UIKeyboardAppearanceAlert;
 	_textField.returnKeyType = UIReturnKeyDone;
 	_textField.textColor = [UIColor colorWithWhite:0.0 alpha:0.5];
 	_textField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
