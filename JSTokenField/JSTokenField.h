@@ -67,6 +67,7 @@ extern NSString *const JSDeletedTokenKey;
 - (void)tokenFieldTextDidChange:(JSTokenField *)tokenField;
 
 - (BOOL)tokenFieldShouldReturn:(JSTokenField *)tokenField;
+- (void)tokenFieldDidBeginEditing:(JSTokenField *)tokenField;
 - (void)tokenFieldDidEndEditing:(JSTokenField *)tokenField;
 
 @end
