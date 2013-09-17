@@ -30,6 +30,8 @@
 #import "JSTokenButton.h"
 #import "JSBackspaceReportingTextField.h"
 #import <QuartzCore/QuartzCore.h>
+#import "EYEConstantsUI.h"
+
 
 NSString *const JSTokenFieldFrameDidChangeNotification = @"JSTokenFieldFrameDidChangeNotification";
 NSString *const JSTokenFieldNewFrameKey = @"JSTokenFieldNewFrameKey";
@@ -88,19 +90,10 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
     _label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, frame.size.height)];
     [_label setBackgroundColor:[UIColor clearColor]];
     [_label setTextColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1.0]];
-    [_label setFont:[UIFont fontWithName:@"Helvetica Neue" size:17.0]];
+    [_label setFont:[UIFont fontWithName:kEYEDefaultLightFont size:14.0]];
     
     [self addSubview:_label];
-	
-	
-	UIImageView *searchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, 11.0, 13, 15)];
-	searchImageView.image = [UIImage imageNamed:@"people.search.icon.png"];
-	[self addSubview:searchImageView];
-	
-    
-    //		self.layer.borderColor = [[UIColor blueColor] CGColor];
-    //		self.layer.borderWidth = 1.0;
-    
+
     _tokens = [[NSMutableArray alloc] init];
     
     frame.origin.y += HEIGHT_PADDING;
@@ -112,11 +105,9 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
     [_textField setBackgroundColor:[UIColor clearColor]];
     [_textField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
 	_textField.returnKeyType = UIReturnKeyDone;
-	_textField.textColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-	_textField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
+	_textField.textColor = [UIColor lightGrayColor];
+	_textField.font = [UIFont fontWithName:kEYEDefaultLightFont size:14.0];
 	
-    //		[_textField.layer setBorderColor:[[UIColor redColor] CGColor]];
-    //		[_textField.layer setBorderWidth:1.0];
     
     [self addSubview:_textField];
     
@@ -290,7 +281,7 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 	textFieldFrame.origin = currentRect.origin;
 
 	if (currentRect.origin.x == 3) {
-		textFieldFrame.origin.x = 25.0;
+		textFieldFrame.origin.x = HEIGHT_PADDING;
 	}
 	
 	if ((self.frame.size.width - textFieldFrame.origin.x) >= 60)

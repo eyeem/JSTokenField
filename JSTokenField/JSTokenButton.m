@@ -29,6 +29,8 @@
 #import "JSTokenButton.h"
 #import "JSTokenField.h"
 #import <QuartzCore/QuartzCore.h>
+#import "EYEConstantsUI.h"
+#import "UIView+EYEAdditions.h"
 
 @implementation JSTokenButton
 
@@ -41,20 +43,21 @@
 + (JSTokenButton *)tokenWithString:(NSString *)string representedObject:(id)obj
 {
 	JSTokenButton *button = (JSTokenButton *)[self buttonWithType:UIButtonTypeCustom];
-	[button setNormalBg:[[UIImage imageNamed:@"people.tagging.bubble.png"] stretchableImageWithLeftCapWidth:13 topCapHeight:0]];
-	[button setHighlightedBg:[[UIImage imageNamed:@"people.tagging.selected.bubble.png"] stretchableImageWithLeftCapWidth:13 topCapHeight:0]];
+	
+	[button setNormalBg:[[UIImage imageNamed:@"iphone_upload_addpeople_add.png"] stretchableImageWithLeftCapWidth:3 topCapHeight:0]];
+	[button setHighlightedBg:[[UIImage imageNamed:@"onboarding_button.png"] stretchableImageWithLeftCapWidth:3 topCapHeight:0]];
 	[button setAdjustsImageWhenHighlighted:NO];
-	[button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-	[[button titleLabel] setFont:[UIFont fontWithName:@"Helvetica Neue" size:15]];
+	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	[[button titleLabel] setFont:[UIFont fontWithName:kEYEDefaultLightFont size:14.0]];
 	[[button titleLabel] setLineBreakMode:NSLineBreakByTruncatingTail];
-	[button setTitleEdgeInsets:UIEdgeInsetsMake(2, 10, 0, 10)];
+	[button setTitleEdgeInsets:UIEdgeInsetsMake(0, 4.0, 0, 4.0)];
 	
 	[button setTitle:string forState:UIControlStateNormal];
 	
 	[button sizeToFit];
 	CGRect frame = [button frame];
-	frame.size.width += 20;
-	frame.size.height = 25;
+	frame.size.width += 8.0;
+	frame.size.height = 20.0;
 	[button setFrame:frame];
 	
 	[button setToggled:NO];
@@ -75,7 +78,7 @@
 	else
 	{
 		[self setBackgroundImage:self.normalBg forState:UIControlStateNormal];
-		[self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+		[self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
 }
 
