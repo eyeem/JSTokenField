@@ -45,7 +45,7 @@
 	JSTokenButton *button = (JSTokenButton *)[self buttonWithType:UIButtonTypeCustom];
 	
 	[button setNormalBg:[[UIImage imageNamed:@"iphone_upload_addpeople_add.png"] stretchableImageWithLeftCapWidth:3 topCapHeight:0]];
-	[button setHighlightedBg:[[UIImage imageNamed:@"onboarding_button.png"] stretchableImageWithLeftCapWidth:3 topCapHeight:0]];
+	[button setHighlightedBg:[[UIImage imageNamed:@"iphone_onboarding_button.png"] stretchableImageWithLeftCapWidth:3 topCapHeight:0]];
 	[button setAdjustsImageWhenHighlighted:NO];
 	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	[[button titleLabel] setFont:[UIFont fontWithName:kEYEDefaultLightFont size:14.0]];
