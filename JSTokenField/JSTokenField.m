@@ -385,20 +385,10 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 	
 }
 
-#pragma mark -
-#pragma mark UITextFieldDelegate
+#pragma mark - UITextFieldDelegate
 
-
-- (void)textFieldWasUpdated:(UITextField *)sender {
-//    if ([self.delegate respondsToSelector:@selector(tokenFieldTextDidChange:)]) {
-//        [self.delegate tokenFieldTextDidChange:self];
-//    }
-	
-	if ([sender.text isEqualToString:@""]) {
-		sender.text = @" ";
-	}
-	
-	
+- (void)textFieldWasUpdated:(UITextField *)sender
+{
 	if ([self.delegate respondsToSelector:@selector(tokenField:wantsToSearchFor:)]) {
 		[self.delegate tokenField:self wantsToSearchFor:sender.text];
 	}
