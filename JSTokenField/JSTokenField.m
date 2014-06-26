@@ -320,18 +320,11 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 		token.center = tokenCenter;
 	}
 
-	
-	
-//	if (self.layer.presentationLayer == nil) {
-//		[self setFrame:selfFrame];
-//	}
-//	else {
-		[UIView animateWithDuration:0.25
-						 animations:^{
-							 [self setFrame:selfFrame];
-						 }
-						 completion:nil];
-//	}
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         [self setFrame:selfFrame];
+                     }
+                     completion:nil];
 }
 
 - (void)toggle:(id)sender
@@ -353,11 +346,6 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 
 
 	}
-	
-//	for (JSTokenButton *token in _tokens)
-//	{
-//		[token setToggled:NO];
-//	}
 }
 
 - (void)setContentSize:(CGSize)contentSize
@@ -413,8 +401,7 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 		}
 		return NO;
 	} else if ([_tokens count] < self.tagLimit) {
-		[self textFieldWasUpdated:textField];
-		return YES;		
+		return YES;
 	} else {
 		return NO;
 	}
@@ -447,11 +434,6 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
         [self.delegate tokenFieldDidEndEditing:self];
         return;
     }
-//    else if ([[textField text] length] > 1)
-//    {
-//        [self addTokenWithTitle:[textField text] representedObject:[textField text]];
-//        [textField setText:nil];
-//    }
 }
 
 @end
