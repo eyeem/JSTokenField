@@ -89,7 +89,7 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 	
     _label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, frame.size.height)];
     [_label setBackgroundColor:[UIColor clearColor]];
-    [_label setTextColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1.0]];
+    [_label setTextColor:[UIColor colorWithWhite:1.0 alpha:1.0]];
     [_label setFont:[UIFont fontWithName:kEYEDefaultLightFont size:14.0]];
     
     [self addSubview:_label];
@@ -106,6 +106,7 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
     [_textField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
 	_textField.returnKeyType = UIReturnKeyDone;
 	_textField.textColor = [UIColor lightGrayColor];
+    _textField.tintColor = [UIColor whiteColor];
 	_textField.font = [UIFont fontWithName:kEYEDefaultLightFont size:14.0];
 	
     
