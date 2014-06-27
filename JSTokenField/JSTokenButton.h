@@ -29,7 +29,7 @@
 #import <UIKit/UIKit.h>
 @class JSTokenField;
 
-@interface JSTokenButton : UIButton <UIKeyInput> {
+@interface JSTokenButton : UIButton <UIKeyInput, UITextInputTraits> {
 
 	BOOL _toggled;
 	

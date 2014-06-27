@@ -121,15 +121,24 @@
 }
 
 - (BOOL)hasText {
-    return NO;
+    return YES;
 }
 - (void)insertText:(NSString *)text {
+    [self deleteBackward];
+    _parentField.textField.text = text;
     return;
 }
 
 
 - (BOOL)canBecomeFirstResponder {
     return YES;
+}
+
+#pragma mark UITextInputTraits methods
+
+- (UIKeyboardAppearance)keyboardAppearance
+{
+    return UIKeyboardAppearanceDark;
 }
 
 @end
