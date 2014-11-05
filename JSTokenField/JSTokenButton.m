@@ -31,6 +31,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "EYEConstantsUI.h"
 #import "UIView+EYEAdditions.h"
+#import "UIImage+EYEAdditions.h"
 
 @implementation JSTokenButton
 
@@ -44,8 +45,8 @@
 {
 	JSTokenButton *button = (JSTokenButton *)[self buttonWithType:UIButtonTypeCustom];
 	
-	[button setNormalBg:[[UIImage imageNamed:@"iphone_upload_addpeople_add.png"] stretchableImageWithLeftCapWidth:3 topCapHeight:0]];
-	[button setHighlightedBg:[[UIImage imageNamed:@"iphone_onboarding_button.png"] stretchableImageWithLeftCapWidth:3 topCapHeight:0]];
+	[button setNormalBg:[UIImage eye_filledImageWithSize:CGSizeMake(1, 1) color:[UIColor colorWithWhite:1.0 alpha:0.2]]];
+	[button setHighlightedBg:[UIImage eye_filledImageWithSize:CGSizeMake(1, 1) color:[UIColor colorWithWhite:1.0 alpha:0.4]]];
 	[button setAdjustsImageWhenHighlighted:NO];
 	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	[[button titleLabel] setFont:[UIFont fontWithName:kEYEDefaultLightFont size:14.0]];
@@ -53,6 +54,8 @@
 	[button setTitleEdgeInsets:UIEdgeInsetsMake(0, 4.0, 0, 4.0)];
 	
 	[button setTitle:string forState:UIControlStateNormal];
+    button.clipsToBounds = YES;
+    button.layer.cornerRadius = 1.0;
 	
 	[button sizeToFit];
 	CGRect frame = [button frame];
