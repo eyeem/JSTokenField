@@ -53,6 +53,7 @@ NSString *const JSDeletedTokenKey = @"JSDeletedTokenKey";
 
 
 @implementation JSTokenField
+@dynamic delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {
