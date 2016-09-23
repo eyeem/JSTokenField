@@ -29,8 +29,8 @@
 #import "JSTokenButton.h"
 #import "JSTokenField.h"
 #import <QuartzCore/QuartzCore.h>
-#import "EYEConstantsUI.h"
-#import "UIView+EYEAdditions.h"
+#import <EYEWidgets/EYEConstantsUI.h>
+#import <EYELibrary/UIView+EYEAdditions.h>
 #import "UIImage+EYEAdditions.h"
 
 @implementation JSTokenButton
