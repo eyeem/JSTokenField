@@ -30,7 +30,7 @@
 #import "JSTokenButton.h"
 #import "JSBackspaceReportingTextField.h"
 #import <QuartzCore/QuartzCore.h>
-#import "EYEConstantsUI.h"
+@import EYEWidgets.EYEConstantsUI;
 
 
 NSString *const JSTokenFieldFrameDidChangeNotification = @"JSTokenFieldFrameDidChangeNotification";
