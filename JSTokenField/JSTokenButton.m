@@ -31,7 +31,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+EYEAdditions.h"
 
-@import EYELibrary;
+@import EYELegacyLibrary;
 @import EYEWidgets;
 
 @implementation JSTokenButton
